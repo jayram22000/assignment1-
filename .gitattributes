@@ -1,2 +1,85 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+import java.util.Scanner;
+
+public class CarUI {
+	public static void main(String[] args) {
+
+		Scanner in = new Scanner(System.in);
+		String l1;
+
+		Car car = new Car("Toyota", "RAV4", 40);
+		System.out.println("a=accelerate b=break x=exit");
+		
+		do
+		{
+			l1 = in.nextLine();
+			if(l1.equals("a"))
+			{
+				car.Accelerate();
+				System.out.println("a=accelerate b=break x=exit");
+			}
+			if(l1.equals("b"))
+			{
+				car.Break();
+				System.out.println("a=accelerate b=break x=exit");
+			}
+		}while (!l1.equals("x"));
+	}
+
+}
+
+class Car {
+
+	private String brand;
+	private String model;
+	private int amountOfFuel;
+
+	public Car()
+
+	{
+		this.brand = "";
+		this.model = "";
+		this.amountOfFuel = 0;
+		printData();
+	}
+
+	public Car(String brand, String model, int amountOfFuel) {
+		this.brand = brand;
+		this.model = model;
+		this.amountOfFuel = amountOfFuel;
+		printData();
+	}
+
+	public void printData() {
+		System.out.println("Brand: " + brand);
+		System.out.println("Model: " + model);
+		System.out.println("Fuel: " + amountOfFuel);
+
+	}
+	public void Break()
+	{
+		System.out.println("Car is breaking");
+	}
+	public void Accelerate()
+	{
+		if (amountOfFuel > 0)
+		{
+			System.out.println("Car is accelerating");
+			amountOfFuel -=1;
+		}
+	}
+
+	public void setModel(String model) {
+		this.model = model;
+	}
+
+	public String getModel() {
+		return model;
+	}
+
+	public void refuel(int amount) {
+		System.out.println("Fuel in the tank: " + amountOfFuel);
+		System.out.println("Refuel: " + amount);
+		System.out.println("Fuel in the tank after the refuel: " + (amountOfFuel +amount));
+	}
+
+}
